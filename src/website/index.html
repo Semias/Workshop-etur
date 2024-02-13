@@ -12,47 +12,67 @@
     <title>Customer Numbers</title>
   </head>
   <body>
-    <header>
+    <header id="header">
       <div class="container">
-        <figure src=""></figure>
+        <figure><img src="planb.png" alt="logo header" /></figure>
         <nav>
           <ul>
-            <li><a href="">ABC</a></li>
-            <li><a href="">ABC</a></li>
-            <li><a href="">ABC</a></li>
+            <li><a href="./">Home</a></li>
+            <li><a href="#main">Customers</a></li>
+            <li><a href="#create">Add Customers</a></li>
+            <li><a href="#check">Check Customers</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <main>
+    <main id="main">
       <div class="container">
-        <div class="customer-cards"></div>
+        <div class="column">
+          <div class="customer-cards">
+            <h2>Customers</h2>
+          </div>
+        </div>
 
-        <form
-          action="http://127.0.0.1:3000/customers"
-          method="post"
-          class="submit-form"
-        >
-          <label for="fName">First name:</label>
-          <input class="input-field" type="text" id="fName" />
-          <label for="lName">Last name:</label>
-          <input class="input-field" type="text" id="lName" />
-          <input type="button" value="Absenden" class="cta-button" />
-        </form>
+        <div class="column">
+          <div class="create-form" id="create">
+            <h2>Create new customer</h2>
+            <form
+              action="http://127.0.0.1:3000/customers"
+              method="post"
+              class="submit-form"
+            >
+              <label for="fName">First name:</label>
+              <input class="input-field" type="text" id="fName" />
+              <label for="lName">Last name:</label>
+              <input class="input-field" type="text" id="lName" />
+              <input type="button" value="Add new" class="cta-button" />
+            </form>
+          </div>
 
-        <div class="check-numbers">
-          <form action="get" action="http://127.0.0.1:3000/customers/:id">
-            <label for="check">Search:</label>
-            <input class="input-field" type="text" id="check" />
-            <input type="button" value="Suchen" class="cta-button" />
-          </form>
-          <p class="result"></p>
+          <div class="check-numbers" id="check">
+            <h2>Check customer ID</h2>
+            <form action="get" action="http://127.0.0.1:3000/customers/:id">
+              <!-- <label for="check">Search:</label> -->
+              <input
+                class="input-field"
+                type="text"
+                id="check"
+                placeholder="Search..."
+              />
+              <input type="button" value="Check" class="cta-button" />
+            </form>
+            <p class="result"></p>
+          </div>
         </div>
       </div>
     </main>
 
-    <footer><div class="container">FOOTER</div></footer>
+    <footer id="footer">
+      <div class="container">
+        <img src="planb.png" alt="logo of planb" />
+      </div>
+    </footer>
     <script src="app.js"></script>
   </body>
 </html>

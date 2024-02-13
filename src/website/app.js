@@ -84,11 +84,11 @@ searchSubmit.addEventListener("click", () => {
       console.log("Erfolg:", data);
       outputParagraph.style.color = "green";
       outputParagraph.style.display = "block";
-      outputParagraph.textContent = "Success!";
+      outputParagraph.textContent = "ID exists!";
     })
     .catch((error) => console.error("Fehler:", error))
     .then(
-      (outputParagraph.textContent = "Something went wrong.")(
+      (outputParagraph.textContent = "Doesnt exist.")(
         (outputParagraph.style.color = "red")(
           (outputParagraph.style.display = "block")
         )

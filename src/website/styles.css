@@ -1,22 +1,49 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Inter";
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 :root {
   --card-gap: 2.5rem;
+  --black: #333333;
+  --orange: #ff5100;
 }
 
 body {
-  font-family: "Inter";
 }
 
 p,
 h1,
 h2,
 h3 {
-  color: rgb(35, 35, 35);
+  color: var(--black);
+  position: relative;
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
+
+h2::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 20px;
+  background-color: var(--orange);
+  left: 0;
+  bottom: -8px;
+}
+h2::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 45px;
+  background-color: var(--orange);
+  left: 0;
+  bottom: -3px;
 }
 
 .container {
@@ -24,12 +51,15 @@ h3 {
   margin: 0 auto;
 }
 
+input {
+  margin-bottom: 0.8rem;
+}
+
 .cta-button {
   padding: 0.5rem;
-  /* border: 2px solid #ff5100; */
   border: none;
   font-size: 1rem;
-  background-color: #ff5100;
+  background-color: var(--orange);
   cursor: pointer;
   border-radius: 5px;
   transition: 0.2s;
@@ -38,7 +68,6 @@ h3 {
 
 .cta-button:hover {
   background-color: #ca4407;
-  /* color: rgb(35, 35, 35); */
 }
 .cta-button:active {
   transform: scale(0.95);
@@ -55,7 +84,15 @@ h3 {
 /*HEADER*/
 header {
   padding: 3rem 0;
-  background-color: #f3f3f3;
+  background-color: rgb(245, 245, 245);
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .container figure {
+  display: flex;
 }
 
 header nav ul {
@@ -66,15 +103,18 @@ header nav ul {
 }
 
 header nav ul li a {
-  color: rgb(35, 35, 35);
+  color: var(--black);
+  /* text-transform: uppercase; */
+  border-bottom: 2px solid transparent;
   text-decoration: none;
-  text-transform: uppercase;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: 0.2s;
 }
 
 header nav ul li a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 2px;
+  border-bottom-color: var(--orange);
 }
 
 @media screen and (max-width: 960px) {
@@ -95,15 +135,21 @@ main {
   padding: 3rem 0;
 }
 main .container {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
 }
+
+/* .column {
+  width: 100%;
+  display: flex;
+  gap: 3rem;
+} */
 
 /*CARDS*/
 .customer-cards {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: var(--card-gap);
   width: 100%;
   height: auto;
@@ -112,20 +158,35 @@ main .container {
   flex-wrap: wrap;
 }
 
+.customer-cards h2 {
+  width: 100%;
+}
+
 .customer-card {
   padding: 1rem;
-  border: 2px solid lightgrey;
+  border: 2px solid rgb(235, 235, 235);
+  background-color: rgb(253, 253, 253);
   border-radius: 5px;
   transition: 0.2s;
   cursor: auto;
-  width: calc(50% - calc(var(--card-gap) / 2));
+  /* width: calc(25% - calc(var(--card-gap) / 2)); */
+  width: calc(100% / 4 - (3 * var(--card-gap)) / 4);
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
 }
+.customer-card .card-name {
+  font-size: 1.3rem;
+  color: var(--black);
+}
+.customer-card .card-number {
+  font-size: 1.1rem;
+  color: #7a7a7a;
+  font-style: italic;
+}
 
 .customer-card:hover {
-  box-shadow: 0 0 5px 3px rgb(0 0 0 / 10%);
+  box-shadow: 0 0 8px 3px rgb(35 35 35 / 5%);
 }
 
 @media screen and (max-width: 960px) {
@@ -136,18 +197,32 @@ main .container {
   }
 
   .customer-card {
+    width: calc(50% - (0.25 * var(--card-gap)));
+  }
+}
+@media screen and (max-width: 520px) {
+  .customer-card {
     width: 100%;
   }
 }
 
-/* FORM */
-.submit-form {
+/* CREATE FORM */
+.create-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5rem;
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
   margin-bottom: 5rem;
+}
+
+.submit-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
 }
 
 /* CHECKER */
@@ -155,9 +230,11 @@ main .container {
   margin-bottom: 5rem;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
   flex-direction: column;
+  padding: 5rem;
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
 }
 .check-numbers form {
   display: flex;
@@ -173,5 +250,11 @@ main .container {
 /*FOOTER*/
 footer {
   padding: 3rem 0;
-  background-color: antiquewhite;
+  background-color: rgb(245, 245, 245);
+}
+
+footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

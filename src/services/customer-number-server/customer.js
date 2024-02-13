@@ -167,5 +167,5 @@ export async function routes(fastify, options) {
   fastify.delete("/customers/:id", async (request, reply) => {
     return deleteCustomer(request.params.id);
   });
-  fastify.post("/reports");
+  // fastify.post("/reports");
 }
