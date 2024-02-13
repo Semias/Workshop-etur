@@ -17,9 +17,9 @@
         <figure src=""></figure>
         <nav>
           <ul>
-            <li><a href="">All Customer Numbers</a></li>
-            <li><a href="">New Customer</a></li>
-            <li><a href="">Check number</a></li>
+            <li><a href="">ABC</a></li>
+            <li><a href="">ABC</a></li>
+            <li><a href="">ABC</a></li>
           </ul>
         </nav>
       </div>
@@ -27,35 +27,28 @@
 
     <main>
       <div class="container">
-        <div class="customer-cards">
-          <div class="customer-card">
-            <p class="card-number">1234567890</p>
-            <p class="card-name">Aaron Seibold</p>
-          </div>
-          <div class="customer-card">
-            <p class="card-number">1234567890</p>
-            <p class="card-name">Aaron Seibold</p>
-          </div>
-        </div>
+        <div class="customer-cards"></div>
 
-        <form action="" class="submit-form">
-          <label for="fname">First name:</label></br>
-          <input class="input-field" type="text" id="fname" /></br>
-          <label for="Lname">Last name:</label></br>
-          <input class="input-field" type="text" id="Lname" /></br>
+        <form
+          action="http://127.0.0.1:3000/customers"
+          method="post"
+          class="submit-form"
+        >
+          <label for="fName">First name:</label>
+          <input class="input-field" type="text" id="fName" />
+          <label for="lName">Last name:</label>
+          <input class="input-field" type="text" id="lName" />
           <input type="button" value="Absenden" class="cta-button" />
         </form>
 
         <div class="check-numbers">
-          <form action="">
-          <label for="check">Search:</label></br>
-          <input class="input-field" type="text" id="check" /></br>
-          <input type="button" value="Suchen" class="cta-button" />
-        </form>
-        <p class="success">Exists</p>
-        <p class="error">Not found</p>
+          <form action="get" action="http://127.0.0.1:3000/customers/:id">
+            <label for="check">Search:</label>
+            <input class="input-field" type="text" id="check" />
+            <input type="button" value="Suchen" class="cta-button" />
+          </form>
+          <p class="result"></p>
         </div>
-  
       </div>
     </main>
 
