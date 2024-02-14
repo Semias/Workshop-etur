@@ -12,7 +12,7 @@ fastify.register(cors, {
 fastify.register(routes);
 
 try {
-  await fastify.listen({ port: 6000 });
+  await fastify.listen({ port: 80 });
 } catch (err) {
   fastify.log.error(err);
   process.exit(1);
