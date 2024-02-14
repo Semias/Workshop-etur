@@ -1,10 +1,4 @@
-import {
-  createCustomer,
-  deleteCustomer,
-  getCustomers,
-  idValidation,
-  routes,
-} from "./customer.js";
+import { routes } from "./customer.routes.js";
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 
@@ -18,7 +12,7 @@ fastify.register(cors, {
 fastify.register(routes);
 
 try {
-  await fastify.listen({ port: 3000 });
+  await fastify.listen({ port: 5000 });
 } catch (err) {
   fastify.log.error(err);
   process.exit(1);

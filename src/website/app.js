@@ -64,15 +64,13 @@ function getCustomers() {
       console.error("Es gab ein Problem mit dem Fetch-Operation:", error);
     });
 }
-getCustomers();
 
-// function searchCustomer() {}
+getCustomers();
 
 //Search Number
 const searchSubmit = document.querySelector(".check-numbers .cta-button");
 searchSubmit.addEventListener("click", () => {
-  const searchIdValue = document.getElementById("check").value;
-
+  const searchIdValue = document.getElementById("checkInput").value;
   fetch(`http://127.0.0.1:3000/customers/${searchIdValue}`)
     .then((response) => {
       if (!response.ok) {

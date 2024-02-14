@@ -12,9 +12,6 @@
   --orange: #ff5100;
 }
 
-body {
-}
-
 p,
 h1,
 h2,
@@ -134,17 +131,6 @@ main {
   height: 100%;
   padding: 3rem 0;
 }
-main .container {
-  /* display: flex;
-  align-items: center;
-  flex-direction: column; */
-}
-
-/* .column {
-  width: 100%;
-  display: flex;
-  gap: 3rem;
-} */
 
 /*CARDS*/
 .customer-cards {
@@ -169,7 +155,6 @@ main .container {
   border-radius: 5px;
   transition: 0.2s;
   cursor: auto;
-  /* width: calc(25% - calc(var(--card-gap) / 2)); */
   width: calc(100% / 4 - (3 * var(--card-gap)) / 4);
   display: flex;
   gap: 0.5rem;
