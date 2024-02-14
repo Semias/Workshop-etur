@@ -1,4 +1,4 @@
-class Report {
+export class Report {
   constructor(
     id,
     category,

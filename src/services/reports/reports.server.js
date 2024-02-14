@@ -1,4 +1,4 @@
-import { routes } from "./customer.routes.js";
+import { routes } from "./reports.routes.js";
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 

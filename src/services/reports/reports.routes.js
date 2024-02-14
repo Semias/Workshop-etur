@@ -3,6 +3,8 @@ import {
   getReports,
   readReport,
   deleteReport,
+  addCommentToReport,
+  getCurrentDateTime,
 } from "./reports.js";
 import { reportSchema } from "./report.schema.js";
 // Angenommen, es gibt Funktionen für die Bearbeitung und das Schließen von Reports,
@@ -44,8 +46,8 @@ export const routes = async (fastify, options) => {
   // Einen Kommentar zu einem Report hinzufügen
   fastify.post("/reports/:reportId/comments", async (request, reply) => {
     const { reportId } = request.params;
-    const { author, message } = request.body;
-    // Logik zum Hinzufügen des Kommentars
+    const { author, message, type } = request.body;
+    addCommentToReport(reportId, author, message, getCurrentDateTime(),type)
   });
 
   fastify.get("/reports", async (request, reply) => {
