@@ -3,16 +3,15 @@ import {
   getReports,
   readReport,
   deleteReport,
-  lockReport,
 } from "./reports.js";
+import { reportSchema } from "./report.schema.js";
 // Angenommen, es gibt Funktionen für die Bearbeitung und das Schließen von Reports,
 // das Hinzufügen von Kommentaren und das Zuweisen von Reports an Entwickler.
 
 export const routes = async (fastify, options) => {
   // Einen neuen Report anlegen
-  fastify.post("/reports", async (request, reply) => {
+  fastify.post("/reports", reportSchema, async (request, reply) => {
     const { body } = request;
-    await verifyCustomerId(request, reply);
     return createReport(...Object.values(body));
   });
 
@@ -49,10 +48,24 @@ export const routes = async (fastify, options) => {
     // Logik zum Hinzufügen des Kommentars
   });
 
-  // Reports filtern und suchen (für Produkt Manager)
   fastify.get("/reports", async (request, reply) => {
-    const { query } = request;
-    // Logik zum Filtern basierend auf der Query
+    // Extrahiere Query-Parameter aus der Request
+    const filters = request.query;
+
+    try {
+      // Verwende die getReports Funktion mit den extrahierten Filtern
+      const filteredReports = getReports(filters);
+
+      // Antwort mit den gefilterten Reports
+      return reply.code(200).send(filteredReports);
+    } catch (error) {
+      // Im Fehlerfall sende eine entsprechende Fehlermeldung
+      return reply
+        .code(500)
+        .send({
+          error: "Ein Fehler ist beim Abrufen der Reports aufgetreten.",
+        });
+    }
   });
 
   // Einen Report löschen

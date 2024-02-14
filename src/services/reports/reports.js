@@ -3,10 +3,28 @@ import { Report } from "./report.class.js";
 const reports = [];
 
 /**
- * @returns Report[] - Returns an array of report objects
+ * Gibt eine Liste von Reports zurück, optional gefiltert nach bestimmten Kriterien.
+ * @param {Object} filters - Ein Objekt, das Filterkriterien enthält.
+ * @returns {Report[]} - Eine Liste von gefilterten oder allen Reports.
  */
-export function getReports() {
-  return reports;
+export function getReports(filters = {}) {
+  // Wenn keine Filter angegeben sind, gib alle Reports zurück.
+  if (Object.keys(filters).length === 0) {
+    return reports;
+  }
+
+  // Filter die Reports basierend auf den übergebenen Kriterien.
+  return reports.filter((report) => {
+    // Prüfe für jedes Schlüssel-Wert-Paar im Filter-Objekt.
+    for (let key in filters) {
+      // Wenn der Report die Kriterien nicht erfüllt, schließe ihn aus.
+      if (report[key] !== filters[key]) {
+        return false;
+      }
+    }
+    // Der Report erfüllt alle Kriterien.
+    return true;
+  });
 }
 
 /**
@@ -92,6 +110,17 @@ export function addCommentToReport(reportId, author, message, createdAt, type) {
     const comment = { author, message, createdAt, type };
     report.comments.push(comment);
     return comment;
+  }
+  return null; // Report nicht gefunden
+}
+
+export function editReport(reportId, updates) {
+  const report = readReport(reportId);
+  if (report) {
+    Object.keys(updates).forEach((key) => {
+      report[key] = updates[key];
+    });
+    return report;
   }
   return null; // Report nicht gefunden
 }
