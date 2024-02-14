@@ -52,17 +52,7 @@ export const reportSchema = {
           items: referenceSchema,
         },
       },
-      required: [
-        "id",
-        "category",
-        "customerId",
-        "description",
-        "owner",
-        "assignedTo",
-        "createdAt",
-        "state",
-        "priority",
-      ],
+      required: ["id"],
     },
   },
 };

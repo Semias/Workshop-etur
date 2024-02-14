@@ -1,30 +1,6 @@
 import { Report } from "./report.class.js";
 
 const reports = [];
-const lockedReports = [];
-let reportCountId = 0;
-
-export function lockReport(report) {
-  lockedReports.push(report);
-}
-
-// function deleteEditedReport(EditedReportId) {
-//   const lockedReportsIndex = lockedReports.findIndex(
-//     (lockedReport) => lockedReport.id === EditedReportId
-//   );
-
-//   if (lockedReportsIndex >= 0) {
-//     lockedReports.splice(index, 1);
-//   }
-// }
-
-// export function isReportLocked(editedReport) {
-//   lockedReports.includes((report) => {
-//     if (lockReport.id === report.id) {
-//       reports.push(report);
-//     }
-//   });
-// }
 
 /**
  * @returns Report[] - Returns an array of report objects
@@ -90,4 +66,32 @@ export function deleteReport(id) {
   if (index >= 0) {
     reports.splice(index, 1);
   }
+}
+
+export function updateReport(reportId, updatedData) {
+  const index = reports.findIndex((report) => report.id === reportId);
+  if (index !== -1) {
+    reports[index] = { ...reports[index], ...updatedData };
+    return reports[index];
+  }
+  return null;
+}
+
+export function assignReportToDeveloper(reportId, developerId) {
+  const report = readReport(reportId);
+  if (report) {
+    report.assignedTo = developerId;
+    return report;
+  }
+  return null;
+}
+
+export function addCommentToReport(reportId, author, message, createdAt, type) {
+  const report = readReport(reportId);
+  if (report) {
+    const comment = { author, message, createdAt, type };
+    report.comments.push(comment);
+    return comment;
+  }
+  return null; // Report nicht gefunden
 }
